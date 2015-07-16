@@ -8,6 +8,6 @@
 #import "KADGroupOperation.h"
 
 @interface DownloadEarthquakesOperation : KADGroupOperation
-- (instancetype)initWithCacheFile:(NSURL __nonnull*)cacheFile;
-- (void)downloadFinishedForURL:(NSURL __nonnull*)url response:(NSHTTPURLResponse __nullable*)response error:(NSError __nullable*)error;
+- (instancetype)initWithCacheFile:(nonnull NSURL *)cacheFile;
+- (void)downloadFinishedForURL:(nonnull NSURL *)url response:(nullable NSHTTPURLResponse *)response error:(nullable NSError *)error;
 @end

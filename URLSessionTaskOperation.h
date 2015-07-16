@@ -8,5 +8,5 @@
 #import "KADOperation.h"
 
 @interface URLSessionTaskOperation : KADOperation
-- (instancetype)initWithTask:(NSURLSessionTask __nonnull*)task;
+- (nonnull instancetype)initWithTask:(nonnull NSURLSessionTask *)task;
 @end

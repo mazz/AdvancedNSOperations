@@ -15,5 +15,5 @@
  Reachability is evaluated once when the operation to which this is attached is asked about its readiness.
  */
 @interface ReachabilityCondition : NSObject <KADOperationCondition>
--(instancetype)initWithHost:(NSURL __nonnull*)host;
+-(instancetype)initWithHost:(nonnull NSURL *)host;
 @end

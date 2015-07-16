@@ -24,14 +24,14 @@ static void *URLSessionTaksOperationKVOContext = (void*)&URLSessionTaksOperation
  An example usage of `URLSessionTaskOperation` can be seen in the `DownloadEarthquakesOperation`.
  */
 
-@interface URLSessionTaskOperation()
 NS_ASSUME_NONNULL_BEGIN
+@interface URLSessionTaskOperation()
 @property (strong, nonatomic) NSURLSessionTask *task;
-NS_ASSUME_NONNULL_END
 @end
+NS_ASSUME_NONNULL_END
 
 @implementation URLSessionTaskOperation
-- (instancetype)initWithTask:(NSURLSessionTask __nonnull*)task
+- (nonnull instancetype)initWithTask:(nonnull NSURLSessionTask *)task
 {
     if ((self = [super init]))
     {
@@ -43,7 +43,7 @@ NS_ASSUME_NONNULL_END
 - (void)execute
 {
     NSAssert((self.task.state == NSURLSessionTaskStateSuspended), @"Task was resumed by something other than self");
-    
+    [self.task resume];
     [self.task addObserver:self forKeyPath:@"state" options:NSKeyValueObservingOptionNew context:&URLSessionTaksOperationKVOContext];
 }
 

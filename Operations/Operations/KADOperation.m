@@ -115,12 +115,12 @@
     }
     return _conditions;
 }
--(void)addCondition:(NSObject <KADOperationCondition> __nonnull*)condition
+-(void)addCondition:(NSObject <KADOperationCondition> *)condition
 {
     NSAssert(self.state < KADEvaluatingConditions, @"Cannot modify conditions after execution has begun.");
     [self.conditions addObject:condition];
 }
--(void)addDependency:(NSOperation __nonnull*)op
+-(void)addDependency:(nonnull NSOperation *)op
 {
     NSAssert(self.state <= KADExecuting, @"Dependencies cannot be modified after execution has begun.");
     [super addDependency:op];
@@ -134,7 +134,7 @@
     }
     return _observers;
 }
--(void)addObserver:(NSObject <KADOperationObserver> __nonnull*)observer
+-(void)addObserver:(nonnull NSObject <KADOperationObserver> *)observer
 {
     NSAssert(self.state < KADExecuting, @"Cannot modify observers after execution has begun.");
     [self.observers addObject:observer];
@@ -172,13 +172,13 @@
 {
     [self cancelWithError:nil];
 }
--(void)cancelWithError:(NSError __nullable*)error
+-(void)cancelWithError:(nullable NSError *)error
 {
 
     [self.internalErrors addObject:error];
     self.state = KADCancelled;
 }
--(void)produceOperation:(NSOperation __nonnull*)operation
+-(void)produceOperation:(nonnull NSOperation *)operation
 {
     for (NSObject <KADOperationObserver> *observer in self.observers) {
         [observer operation:self didProduceOperation:operation];
@@ -198,7 +198,7 @@
 {
     [self finish:nil];
 }
--(void)finishWithError:(NSError __nullable*)error
+-(void)finishWithError:(nullable NSError *)error
 {
     if (error){
         [self finish:@[error]];
@@ -211,7 +211,7 @@
  A private property to ensure we only notify the observers once that the
  operation has finished.
  */
--(void)finish:(NSArray __nullable*)errors
+-(void)finish:(nullable NSArray *)errors
 {
     if (!_hasFinishedAlready)
     {
@@ -235,7 +235,7 @@
  this method to potentially inform the user about an error when trying to
  bring up the Core Data stack.
  */
--(void)finished:(NSArray __nullable*)errors
+-(void)finished:(nullable NSArray *)errors
 {
     // No op.
 }

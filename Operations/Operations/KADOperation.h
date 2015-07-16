@@ -46,18 +46,16 @@ NS_ASSUME_NONNULL_BEGIN
 @interface KADOperation : NSOperation
 @property (nonatomic, assign) BOOL userInitiated;
 @property (nonatomic, readonly) KADOperationState state;
-@property (nonatomic, strong) NSMutableArray<id<KADOperationCondition>> * conditions;
-@property (nonatomic, strong) NSMutableArray<id<KADOperationObserver>> * observers;
-@property (nonatomic, strong) NSMutableArray<NSError *> * internalErrors;
+@property (nonatomic, strong) NSMutableArray * conditions, * observers, * internalErrors;
 NS_ASSUME_NONNULL_END
 
--(void)addObserver:(NSObject <KADOperationObserver> __nonnull*)observer;
--(void)addCondition:(NSObject <KADOperationCondition> __nonnull*)condition;
+-(void)addObserver:(nonnull NSObject <KADOperationObserver> *)observer;
+-(void)addCondition:(nonnull NSObject <KADOperationCondition> *)condition;
 -(void)willEnqueue;
 -(void)finish;
--(void)finish:(NSArray __nullable*)errors;
--(void)finishWithError:(NSError __nullable*)error;
--(void)finished:(NSArray __nullable*)errors;
+-(void)finish:(nullable NSArray*)errors;
+-(void)finishWithError:(nullable NSError *)error;
+-(void)finished:(nullable NSArray *)errors;
 -(void)execute;
--(void)produceOperation:(NSOperation __nonnull*)operation;
+-(void)produceOperation:(nonnull NSOperation *)operation;
 @end

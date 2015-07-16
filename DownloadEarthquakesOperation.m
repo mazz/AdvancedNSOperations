@@ -16,7 +16,7 @@
 
 @implementation DownloadEarthquakesOperation
 /// - parameter cacheFile: The file `NSURL` to which the earthquake feed will be downloaded.
-- (instancetype)initWithCacheFile:(NSURL __nonnull*)cacheFile
+- (instancetype)initWithCacheFile:(nonnull NSURL *)cacheFile
 {
     if ((self = [super initWithOperations:@[]]))
     {
@@ -25,7 +25,7 @@
         
         NSURL *url = [[NSURL alloc] initWithString:@"http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/2.5_month.geojson"];
         NSURLSessionDownloadTask *task = [[NSURLSession sharedSession] downloadTaskWithURL:url completionHandler:^(NSURL * __nullable location, NSURLResponse * __nullable response, NSError * __nullable error) {
-            [self downloadFinishedForURL:url response:(NSHTTPURLResponse __nullable*)response error:error];
+            [self downloadFinishedForURL:url response:(NSHTTPURLResponse *)response error:error];
         }];
         
         if (task != nil)
@@ -44,7 +44,7 @@
     return self;
 }
 
-- (void)downloadFinishedForURL:(NSURL __nonnull*)url response:(NSHTTPURLResponse __nullable*)response error:(NSError __nullable*)error
+- (void)downloadFinishedForURL:(nonnull NSURL *)url response:(nullable NSHTTPURLResponse *)response error:(nullable NSError *)error
 {
     NSLog(@"contents: %@", [[NSString alloc] initWithContentsOfURL:url encoding:NSUTF8StringEncoding error:nil]);
 }

@@ -17,7 +17,7 @@ static NSString * name = @"Reachability";
 }
 @end
 @implementation ReachabilityCondition
--(instancetype)initWithHost:(NSURL __nonnull*)host
+-(instancetype)initWithHost:(nonnull NSURL *)host
 {
     if (self = [super init]){
         _host = host;
